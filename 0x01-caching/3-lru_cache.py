@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """inherits from BaseCaching and is a caching system"""
+
 BaseCaching = __import__('base_caching').BaseCaching
 
 
@@ -24,5 +25,8 @@ class LRUCache(BaseCaching):
                 print(f"DISCARD: {first}")
 
     def get(self, key):
-        """return the value in self.cache_data linked to key"""
-        return self.cache_data.get(key, None)
+        """return the value in self.keys linked to key"""
+        if key is not None and key in self.cache_data:
+            self.keys.append(self.keys.pop(self.keys.index(key)))
+            return self.cache_data[key]
+        return None
