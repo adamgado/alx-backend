@@ -17,9 +17,9 @@ class FIFOCache(BaseCaching):
             if key not in self.keys_list:
                 self.keys_list.append(key)
             if len(self.keys_list) > BaseCaching.MAX_ITEMS:
-                last = self.keys_list.pop(0)
-                del self.cache_data[last]
-                print(f"DISCARD: {last}")
+                first = self.keys_list.pop(0)
+                del self.cache_data[first]
+                print(f"DISCARD: {first}")
 
     def get(self, key):
         """return the value in self.cache_data linked to key"""
