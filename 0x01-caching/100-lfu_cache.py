@@ -29,7 +29,6 @@ class LFUCache(BaseCaching):
                 self.keys.append(self.keys.pop(self.keys.index(key)))
                 self.uses[key] += 1
 
-
     def get(self, key):
         """return the value in self.keys linked to key"""
         if key is not None and key in self.cache_data:
